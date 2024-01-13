@@ -35,7 +35,15 @@ function startTimer(duration) {
 
 startButton.addEventListener('click', () => startTimer(30 * 60));
 stopButton.addEventListener('click', () => clearInterval(countdown));
-resetButton.addEventListener('click', () => startTimer(30 * 60));
+// resetButton.addEventListener('click', () => startTimer(30 * 60));
 
 // Start the timer automatically
 startTimer(30 * 60);
+
+// Start the invisible video to keep the screen awake
+document.addEventListener('DOMContentLoaded', (event) => {
+  const video = document.getElementById('keepAwakeVideo');
+  video.play().catch(error => {
+      console.error("Video play failed:", error);
+  });
+});
